@@ -1,4 +1,4 @@
-"""script de scrapping no site da Pfile_cache para verificacao de status do passaporte"""
+"""scraps the PF website to the passport status"""
 def scrapper(url, regex):
     """gets url from argv[1] and pattern from argv[2] and return results from webpage"""
     import requests
@@ -27,9 +27,9 @@ def file_handler(name, action, status=0):
 
 
 def check(url, dest="0", passwd="0"):
-    """checka o site da PF e compara o status a execução anterior
-    se tiver alteração printa a alteração e atualiza o arquivo de histórico
-    senão retorna 'No change'"""
+    """checks the PF site and compares status from last execution if there is
+    any change prints it and update the pickle file if not returns 'No change',
+    optionally sends email"""
     from mailer import email
     regex = '//td/text()'
     status = scrapper(url, regex)
